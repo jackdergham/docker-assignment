@@ -1,0 +1,12 @@
+# Alpine-based python image for lightweight
+FROM python:3.13-alpine
+
+RUN apk add --no-cache netcat-openbsd
+
+# Set the working directory inside the container
+WORKDIR /app
+
+COPY consumer.py .
+
+# Define the command to run the producer.py script
+CMD ["python", "consumer.py"]

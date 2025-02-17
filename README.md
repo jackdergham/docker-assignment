@@ -10,11 +10,13 @@
 
 1. Automatic approach through the shell script
 
-    Open a terminal in the directory where you cloned the repository and run the following command: `./auto.sh` .
+    Open a terminal in the directory where you cloned the repository and run the following command:
+   `./auto.sh` .
 
-2. Manual approach
+3. Manual approach
 
-    Open a terminal in the directory where you cloned the repository and run the command: `docker compose up --build`.
+    Open a terminal in the directory where you cloned the repository and run the command:
+   `docker compose up --build`.
 
     This will automatically build the images and start up the containers directly in the terminal. `--build` can be ommited if the images have been built previously.
 

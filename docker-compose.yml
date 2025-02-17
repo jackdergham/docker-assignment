@@ -1,0 +1,26 @@
+services:
+  producer:
+    build:
+      context: .
+      dockerfile: Dockerfile.producer
+    environment:
+      - PYTHONUNBUFFERED=1
+    depends_on:
+      consumer:
+        condition: service_healthy
+  consumer:
+    build:
+      context: .
+      dockerfile: Dockerfile.consumer
+    environment:
+      - PYTHONUNBUFFERED=1
+    volumes:
+      - data-volume:/data
+    healthcheck:
+      test: ["CMD-SHELL", "nc -z 0.0.0.0 5000 || exit 1"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  data-volume:
